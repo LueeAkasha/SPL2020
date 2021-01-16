@@ -1,0 +1,7 @@
+bgu/spl/net/api/Users/User.class
+bgu/spl/net/api/Course.class
+bgu/spl/net/api/Messages/Message.class
+bgu/spl/net/api/Database.class
+bgu/spl/net/api/MessagingProtocol.class
+bgu/spl/net/api/Messages/ServerMessages/ACK.class
+bgu/spl/net/api/MessagingProtocolImpl.class
