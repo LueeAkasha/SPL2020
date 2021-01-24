@@ -147,7 +147,7 @@ class _Repository:
             print(error)
         return output    
     
-    def send_shipment(self, location, amount):
+    def send_shipment(self, location, amount, output_file):
         try:
             temp = amount
             self.c_DAO.update_demand(location,amount)
@@ -159,13 +159,13 @@ class _Repository:
                 logistic = clinic.get_logistic()
                 self.l_DAO.update_count_sent(logistic, temp-amount)
             
-            with open("output.txt", "a") as file_object:
+            with open(output_file, "a") as file_object:
                 output_str =str(self.get_total_inventory())+','+str(self.get_total_demand())+","+str(self.get_total_received())+","+str(self.get_total_sent())+"\n"
                 file_object.write(output_str)
         except Exception as error:
             print(error)
        
-    def receive_shipment(self, name, amount, date):
+    def receive_shipment(self, name, amount, date, output_file):
         try:
             
             supplier = self.s_DAO.get_supplier_by_name(name)
@@ -173,7 +173,7 @@ class _Repository:
             self.v_DAO.insert(vaccine)
             logistic = supplier.get_logistic()
             self.l_DAO.update_count_received(logistic, amount)
-            with open("output.txt", "a") as file_object:
+            with open(output_file, "a") as file_object:
                 output_str =str(self.get_total_inventory())+','+str(self.get_total_demand())+","+str(self.get_total_received())+","+str(self.get_total_sent())+"\n"
                 file_object.write(output_str)
         except Exception as error:
